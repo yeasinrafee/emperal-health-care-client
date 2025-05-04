@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-import { green, purple } from '@mui/material/colors';
 
 export const theme = createTheme({
   palette: {
@@ -8,6 +7,24 @@ export const theme = createTheme({
     },
     secondary: {
       main: '#666f75',
+    },
+  },
+
+  components: {
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
+      },
+      styleOverrides: {
+        root: {
+          padding: '8px 24px',
+        },
+      },
+    },
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'lg',
+      },
     },
   },
 });
