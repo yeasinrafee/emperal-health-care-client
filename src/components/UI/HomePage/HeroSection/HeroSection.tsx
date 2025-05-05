@@ -8,6 +8,7 @@ export default function HeroSection() {
       sx={{
         display: 'flex',
         direction: 'row',
+        gap: 5,
         my: 16,
       }}
     >
@@ -15,6 +16,7 @@ export default function HeroSection() {
         sx={{
           flex: 1,
           position: 'relative',
+          width: '50%',
         }}
       >
         <Box
@@ -48,7 +50,7 @@ export default function HeroSection() {
           component={'p'}
           fontWeight={400}
           sx={{
-            width: '50%',
+            width: '90%',
             my: 4,
           }}
         >
@@ -62,7 +64,13 @@ export default function HeroSection() {
           <Button variant='outlined'>Contact Us</Button>
         </Box>
       </Box>
-      <Box>Right</Box>
+      <Box
+        sx={{
+          width: '50%',
+        }}
+      >
+        <Image src={assets.images.doctors2} alt='doctors' />
+      </Box>
     </Container>
   );
 }
