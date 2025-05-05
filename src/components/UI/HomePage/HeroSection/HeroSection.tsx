@@ -51,7 +51,7 @@ export default function HeroSection() {
           fontWeight={400}
           sx={{
             width: '90%',
-            my: 4,
+            my: 3.8,
           }}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aut a
@@ -69,7 +69,11 @@ export default function HeroSection() {
           width: '50%',
         }}
       >
-        <Image src={assets.images.doctors2} alt='doctors' />
+        <Image
+          src={assets.images.doctors2}
+          alt='doctors'
+          className='rounded-md'
+        />
       </Box>
     </Container>
   );
