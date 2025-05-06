@@ -70,6 +70,7 @@ export default async function Specialist() {
                     fontWeight={600}
                     fontSize={18}
                     mt={2}
+                    color='primary.main'
                   >
                     {specialty.title}
                   </Typography>
