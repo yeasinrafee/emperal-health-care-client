@@ -3,11 +3,14 @@ import Image from 'next/image';
 import React from 'react';
 
 export default async function Specialist() {
-  const res = await fetch('http://localhost:3000/api/v1/specialties', {
-    next: {
-      revalidate: 30,
-    },
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/specialties`,
+    {
+      next: {
+        revalidate: 30,
+      },
+    }
+  );
   const { data: specialties } = await res.json();
 
   return (
