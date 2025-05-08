@@ -169,6 +169,56 @@ export default function HowItWorks() {
             </Grid>
           </Box>
         </Stack>
+
+        <Stack
+          my={10}
+          py={9}
+          height={4}
+          width={'100%'}
+          sx={{
+            background: `linear-gradient(to right, rgba(0, 100, 0, 0.9), rgba(144, 238, 144, 0.6))`,
+          }}
+          direction={'row'}
+          justifyContent={'space-around'}
+          alignItems={'center'}
+          borderRadius={'12px'}
+        >
+          <Box>
+            <Typography color={'white'} variant='h3' component={'h1'}>
+              180+
+            </Typography>
+            <Typography color={'white'} component={'p'}>
+              Expert Doctors
+            </Typography>
+          </Box>
+
+          <Box>
+            <Typography color={'white'} variant='h3' component={'h1'}>
+              26+
+            </Typography>
+            <Typography color={'white'} component={'p'}>
+              Expert Service
+            </Typography>
+          </Box>
+
+          <Box>
+            <Typography color={'white'} variant='h3' component={'h1'}>
+              10K+
+            </Typography>
+            <Typography color={'white'} component={'p'}>
+              Happy Patients
+            </Typography>
+          </Box>
+
+          <Box>
+            <Typography color={'white'} variant='h3' component={'h1'}>
+              150+
+            </Typography>
+            <Typography color={'white'} component={'p'}>
+              Best Award Winners
+            </Typography>
+          </Box>
+        </Stack>
       </Box>
     </Container>
   );
