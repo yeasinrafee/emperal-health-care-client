@@ -85,7 +85,11 @@ export default function Footer() {
           <Image src={linkedinIcon} width={40} height={30} alt='facebook' />
         </Stack>
 
-        <div className='border-b-[1px] border-dashed'></div>
+        <Box
+          sx={{
+            border: '1px dashed lightgray',
+          }}
+        ></Box>
 
         <Stack
           direction={'row'}
