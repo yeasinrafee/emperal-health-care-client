@@ -18,8 +18,8 @@ export default async function TopRatedDoctors() {
   return (
     <Box
       sx={{
-        my: 10,
-        py: 30,
+        // my: 10,
+        py: 25,
         backgroundColor: 'rgba(20, 20, 20, 0.1)',
         clipPath: 'polygon(0 0, 100% 25%, 100% 100%, 0 75%)',
       }}
@@ -37,7 +37,7 @@ export default async function TopRatedDoctors() {
         <Grid container spacing={2}>
           {doctors &&
             doctors.map((doctor: any) => (
-              <Grid item key={doctor.id} md={4}>
+              <Grid key={doctor.id} size={4}>
                 <Card sx={{ maxWidth: '350px' }}>
                   <Box>
                     <Image
