@@ -17,8 +17,6 @@ const SpecialtiesPage = () => {
   const { data, isLoading } = useGetAllSpecialtiesQuery({});
   const [deleteSpecialty] = useDeleteSpecialtyMutation();
 
-  console.log(data);
-
   const handleDelete = async (id: string) => {
     try {
       const res = await deleteSpecialty(id).unwrap();

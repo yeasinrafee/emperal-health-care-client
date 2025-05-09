@@ -22,7 +22,6 @@ export default function DashboardDrawer({
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
   const { data, isLoading } = useGetSingleUserQuery({});
-  console.log(data);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
