@@ -12,7 +12,7 @@ const AuthButton = () => {
   };
   return (
     <>
-      {userInfo?.userId ? (
+      {userInfo?.email ? (
         <Button color='error' onClick={handleLogOut}>
           Logout
         </Button>
