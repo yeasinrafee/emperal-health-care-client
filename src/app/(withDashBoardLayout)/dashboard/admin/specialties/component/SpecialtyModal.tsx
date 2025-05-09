@@ -29,6 +29,7 @@ const SpecialtyModal = ({ open, setOpen }: TProps) => {
       console.error(err.message);
     }
   };
+
   return (
     <HCModal open={open} setOpen={setOpen} title='Create A New Specialty'>
       <HCForm onSubmit={handleFormSubmit}>

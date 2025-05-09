@@ -3,19 +3,21 @@
 import { Box, Button, IconButton, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import SpecialtyModal from './component/SpecialtyModal';
-import {
-  useDeleteSpecialtyMutation,
-  useGetAllSpecialtiesQuery,
-} from '@/redux/api/specialties.Api';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Image from 'next/image';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { toast } from 'sonner';
+import {
+  useDeleteSpecialtyMutation,
+  useGetAllSpecialtiesQuery,
+} from '@/redux/api/specialties.Api';
 
 const SpecialtiesPage = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { data, isLoading } = useGetAllSpecialtiesQuery({});
   const [deleteSpecialty] = useDeleteSpecialtyMutation();
+
+  console.log(data);
 
   const handleDelete = async (id: string) => {
     try {
