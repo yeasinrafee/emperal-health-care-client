@@ -47,7 +47,8 @@ instance.interceptors.response.use(
       config.sent = true;
       const response = await getNewAccessToken();
       const accessToken = response?.data?.accessToken;
-      config.headers['Authorization'] = accessToken;
+      // config.headers['Authorization'] = accessToken;
+      config.headers.Authorization = accessToken;
       setToLocalStorage(authKey, accessToken);
       return instance(config);
     } else {

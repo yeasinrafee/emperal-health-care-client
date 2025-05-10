@@ -17,6 +17,7 @@ type TProps = {
 
 const ScheduleModal = ({ open, setOpen }: TProps) => {
   const [createSchedule] = useCreateScheduleMutation();
+
   const handleFormSubmit = async (values: FieldValues) => {
     values.startDate = dateFormatter(values.startDate);
     values.endDate = dateFormatter(values.endDate);
@@ -24,8 +25,8 @@ const ScheduleModal = ({ open, setOpen }: TProps) => {
     values.endTime = timeFormatter(values.endTime);
 
     try {
-      const res = await createSchedule(values);
-      if (res?.data?.length) {
+      const res = await createSchedule(values).unwrap();
+      if (res?.length) {
         toast.success('Schedules Created successfully!!');
         setOpen(false);
       }
@@ -33,6 +34,7 @@ const ScheduleModal = ({ open, setOpen }: TProps) => {
       console.log(err);
     }
   };
+
   return (
     <HCModal open={open} setOpen={setOpen} title='Create Schedule'>
       <HCForm onSubmit={handleFormSubmit}>

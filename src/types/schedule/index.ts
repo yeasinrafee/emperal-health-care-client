@@ -1,7 +1,8 @@
 export type TSchedule = {
+  [x: string]: any;
   id?: string;
-  startDate: string;
-  endDate: string;
+  startDateTime: string;
+  endDateTime: string;
 };
 
 export type TScheduleForm = {

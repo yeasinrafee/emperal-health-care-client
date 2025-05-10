@@ -20,22 +20,22 @@ const Schedules = () => {
   const [deleteSchedule] = useDeleteScheduleMutation();
   const { data, isLoading } = useGetAllSchedulesQuery({});
 
-  const schedule = data?.schedules?.data;
-  console.log(schedule);
+  const schedules = data?.schedules;
   const meta = data?.meta;
 
   useEffect(() => {
-    const updateData = schedule?.map((schedule: TSchedule) => {
+    const updateData = schedules?.map((schedule: TSchedule, index: number) => {
       return {
+        sl: index + 1,
         id: schedule?.id,
-        startDate: dateFormatter(schedule?.startDate),
-        endDate: dateFormatter(schedule?.endDate),
-        startTime: dayjs(schedule?.startDate).format('hh:mm a'),
-        endTime: dayjs(schedule?.endDate).format('hh:mm a'),
+        startDate: dateFormatter(schedule.startDateTime),
+        endDate: dateFormatter(schedule.endDateTime),
+        startTime: dayjs(schedule?.startDateTime).format('hh:mm a'),
+        endTime: dayjs(schedule?.endDateTime).format('hh:mm a'),
       };
     });
     setAllSchedule(updateData);
-  }, [schedule]);
+  }, [schedules]);
 
   const handleDelete = async (id: string) => {
     try {
@@ -49,6 +49,7 @@ const Schedules = () => {
   };
 
   const columns: GridColDef[] = [
+    { field: 'sl', headerName: 'SL' },
     { field: 'startDate', headerName: 'Start Date', flex: 1 },
     { field: 'endDate', headerName: 'End Date', flex: 1 },
     { field: 'startTime', headerName: 'Start Time', flex: 1 },
@@ -82,7 +83,7 @@ const Schedules = () => {
       <ScheduleModal open={isModalOpen} setOpen={setIsModalOpen} />
       {!isLoading ? (
         <Box my={2}>
-          <DataGrid rows={allSchedule} columns={columns} />
+          <DataGrid rows={allSchedule ?? []} columns={columns} />
         </Box>
       ) : (
         <h1>Loading....</h1>
