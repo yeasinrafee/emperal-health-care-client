@@ -10,6 +10,9 @@ const AuthButton = () => {
   const handleLogOut = () => {
     logoutUser(router);
   };
+
+  console.log(userInfo);
+
   return (
     <>
       {userInfo?.email ? (

@@ -114,9 +114,21 @@ const LoginPage = () => {
                   />
                 </Grid>
               </Grid>
-              <Typography mb={1} component='p' fontWeight={300} textAlign='end'>
-                Forgot Password?
-              </Typography>
+
+              <Link href={'/forgot-password'}>
+                <Typography
+                  mb={1}
+                  component='p'
+                  fontWeight={300}
+                  textAlign='end'
+                  sx={{
+                    textDecoration: 'underline',
+                  }}
+                >
+                  Forgot Password?
+                </Typography>
+              </Link>
+
               <Button
                 fullWidth={true}
                 sx={{
