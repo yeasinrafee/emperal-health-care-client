@@ -1,3 +1,4 @@
+import KeyIcon from '@mui/icons-material/Key';
 import { USER_ROLE } from '@/constants/role';
 import { TDrawerItem, TUserRole } from '@/types';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -16,6 +17,11 @@ export const drawerItems = (role: TUserRole): TDrawerItem[] => {
       title: 'Profile',
       path: `${role}/profile`,
       icon: AccountBoxIcon,
+    },
+    {
+      title: 'Change Password',
+      path: `change-password`,
+      icon: KeyIcon,
     },
   ];
 
