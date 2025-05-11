@@ -6,9 +6,19 @@ import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import TryIcon from '@mui/icons-material/Try';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 export const drawerItems = (role: TUserRole): TDrawerItem[] => {
   const roleMenus: TDrawerItem[] = [];
+
+  const defaultMenus = [
+    {
+      title: 'Profile',
+      path: `${role}/profile`,
+      icon: AccountBoxIcon,
+    },
+  ];
+
   switch (role) {
     case USER_ROLE.SUPER_ADMIN:
       roleMenus.push(
@@ -102,5 +112,5 @@ export const drawerItems = (role: TUserRole): TDrawerItem[] => {
     default:
       break;
   }
-  return [...roleMenus];
+  return [...roleMenus, ...defaultMenus];
 };
