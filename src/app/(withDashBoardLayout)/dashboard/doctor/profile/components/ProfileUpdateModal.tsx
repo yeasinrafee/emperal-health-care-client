@@ -46,8 +46,6 @@ const ProfileUpdateModal = ({ open, setOpen, id }: TProps) => {
   const { data: allSpecialties } = useGetAllSpecialtiesQuery(undefined);
   const [selectedSpecialtiesIds, setSelectedSpecialtiesIds] = useState([]);
 
-  console.log(doctorData);
-
   const [updateDoctor, { isLoading: updating }] = useUpdateDoctorMutation();
 
   useEffect(() => {
