@@ -1,9 +1,18 @@
 'use client';
-import { Box, Container, Stack, Typography } from '@mui/material';
+import useUserInfo from '@/hooks/useUserInfo';
+import { logoutUser } from '@/services/actions/logoutUser';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
+  const { email } = useUserInfo();
+  const router = useRouter();
+  const handleLogOut = () => {
+    logoutUser(router);
+  };
+
   const AuthButton = dynamic(
     () => import('@/components/UI/AuthButton/AuthButton'),
     { ssr: false }
@@ -84,9 +93,30 @@ export default function Navbar() {
           >
             NGOs
           </Typography>
+          {email && (
+            <Typography
+              component={Link}
+              href={`/dashboard/${''}`}
+              sx={{
+                transition: 'color 0.3s',
+                '&:hover': {
+                  color: 'primary.main',
+                },
+              }}
+            >
+              Dashboard
+            </Typography>
+          )}
         </Stack>
-
-        <AuthButton />
+        {email ? (
+          <Button color='error' onClick={handleLogOut}>
+            Logout
+          </Button>
+        ) : (
+          <Button component={Link} href='/login'>
+            Login
+          </Button>
+        )}
       </Stack>
     </Container>
   );

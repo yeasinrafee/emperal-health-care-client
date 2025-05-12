@@ -16,6 +16,7 @@ export type TDoctor = {
 
 export type TSpecialties = {
   specialtiesId: string;
+  title: string;
   isDeleted?: null;
 };
 

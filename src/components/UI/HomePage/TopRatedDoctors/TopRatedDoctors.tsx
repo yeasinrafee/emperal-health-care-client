@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Link from 'next/link';
 
 export default async function TopRatedDoctors() {
   const res = await fetch('http://localhost:3000/api/v1/doctor?page=1&limit=3');
@@ -39,7 +40,18 @@ export default async function TopRatedDoctors() {
             doctors.map((doctor: any) => (
               <Grid key={doctor.id} size={4}>
                 <Card sx={{ maxWidth: '350px' }}>
-                  <Box>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: 300,
+                      '& img': {
+                        width: '100%',
+                        height: '100%',
+                        overflow: 'hidden',
+                        objectFit: 'cover',
+                      },
+                    }}
+                  >
                     <Image
                       src={doctor?.profilePhoto}
                       alt='doctor image'
@@ -84,7 +96,12 @@ export default async function TopRatedDoctors() {
             textAlign: 'center',
           }}
         >
-          <Button variant='outlined' sx={{ marginTop: '20px' }}>
+          <Button
+            variant='outlined'
+            sx={{ marginTop: '20px' }}
+            component={Link}
+            href='/doctors'
+          >
             View All
           </Button>
         </Box>

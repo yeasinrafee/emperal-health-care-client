@@ -11,8 +11,6 @@ const AuthButton = () => {
     logoutUser(router);
   };
 
-  console.log(userInfo);
-
   return (
     <>
       {userInfo?.email ? (
