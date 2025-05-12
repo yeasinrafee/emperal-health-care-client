@@ -1,33 +1,25 @@
 'use client';
 import { useGetMyAppointmentsQuery } from '@/redux/api/appointmentApi';
-import { Box, IconButton } from '@mui/material';
+import { Box, Chip, IconButton } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import Link from 'next/link';
 import { dateFormatter } from '@/utils/dateFormatter';
-import { getTimeIn12HourFormat } from '../schedules/components/MultipleSelectFieldChip';
+import { getTimeIn12HourFormat } from '../../doctor/schedules/components/MultipleSelectFieldChip';
+import HCChip from '@/components/Shared/HCChip/HCChip';
 
 const PatientAppointmentsPage = () => {
   const { data, isLoading } = useGetMyAppointmentsQuery({});
   const appointments = data?.appointments;
   const meta = data?.meta;
-  // console.log(appointments);
 
   const columns: GridColDef[] = [
     {
       field: 'name',
-      headerName: 'Patient Name',
+      headerName: 'Doctor Name',
       flex: 1,
       renderCell: ({ row }) => {
-        return row?.patient?.name;
-      },
-    },
-    {
-      field: 'contactNumber',
-      headerName: 'Contact Number',
-      flex: 1,
-      renderCell: ({ row }) => {
-        return row?.patient?.contactNumber;
+        return row.doctor.name;
       },
     },
     {
@@ -47,7 +39,7 @@ const PatientAppointmentsPage = () => {
       align: 'center',
       flex: 1,
       renderCell: ({ row }) => {
-        return getTimeIn12HourFormat(row?.schedule?.startDate);
+        return getTimeIn12HourFormat(row.schedule.startDate);
       },
     },
 
@@ -57,6 +49,13 @@ const PatientAppointmentsPage = () => {
       flex: 1,
       headerAlign: 'center',
       align: 'center',
+      renderCell: ({ row }) => {
+        return row.paymentStatus === 'PAID' ? (
+          <HCChip label={row.paymentStatus} type='success' />
+        ) : (
+          <HCChip label={row.paymentStatus} type='error' />
+        );
+      },
     },
     {
       field: 'action',
@@ -66,11 +65,17 @@ const PatientAppointmentsPage = () => {
       align: 'center',
       renderCell: ({ row }) => {
         return (
-          <Link href={`/video?videoCallingId=${row?.videoCallingId}`}>
-            <IconButton>
-              <VideocamIcon />
-            </IconButton>
-          </Link>
+          <IconButton
+            component={Link}
+            href={`/video?videoCallingId=${row?.videoCallingId}`}
+            disabled={row.paymentStatus === 'UNPAID'}
+          >
+            <VideocamIcon
+              sx={{
+                color: row.paymentStatus === 'PAID' ? 'primary.main' : '',
+              }}
+            />
+          </IconButton>
         );
       },
     },

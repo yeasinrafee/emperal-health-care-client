@@ -74,8 +74,6 @@ const DoctorScheduleSlots = ({ id }: { id: string }) => {
     });
   const schedulesOfTomorrow = nextDoctorSchedules?.doctorSchedules;
 
-  console.log(doctorSchedules);
-
   const availableSlots = doctorSchedules?.filter(
     (doctor: TDoctorSchedule) => !doctor.isBooked
   );
