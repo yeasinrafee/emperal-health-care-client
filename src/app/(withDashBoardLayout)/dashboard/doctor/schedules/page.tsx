@@ -24,8 +24,10 @@ const DoctorSchedulesPage = () => {
   const [allSchedule, setAllSchedule] = useState<any>([]);
   const { data, isLoading } = useGetAllDoctorSchedulesQuery({ ...query });
 
-  const schedules = data?.doctorSchedules?.data;
+  const schedules = data?.doctorSchedules?.data?.schedule;
   const meta = data?.doctorSchedules?.meta;
+
+  console.log(schedules);
 
   let pageCount: number;
 

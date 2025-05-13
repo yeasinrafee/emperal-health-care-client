@@ -31,9 +31,10 @@ const LoginPage = () => {
         storeUserInfo({ accessToken: res?.data?.accessToken });
       } else {
         setError(res.message);
-        toast.error(error, { id: toastId });
+        toast.error(res.message, { id: toastId });
       }
     } catch (err: any) {
+      toast.error(error, { id: toastId });
       console.log(err.message);
     }
   };

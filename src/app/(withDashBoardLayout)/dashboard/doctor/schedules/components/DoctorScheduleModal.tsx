@@ -39,12 +39,9 @@ const DoctorScheduleModal = ({ open, setOpen }: TProps) => {
 
   const { data } = useGetAllSchedulesQuery(query);
   const schedules = data?.schedules;
-  console.log(schedules);
 
   const [createDoctorSchedule, { isLoading }] =
     useCreateDoctorScheduleMutation();
-
-  console.log(selectedScheduleIds);
 
   const onSubmit = async () => {
     try {
@@ -58,7 +55,6 @@ const DoctorScheduleModal = ({ open, setOpen }: TProps) => {
     }
   };
 
-  console.log(selectedScheduleIds);
   return (
     <HCModal open={open} setOpen={setOpen} title='Create Doctor Schedule'>
       <Stack direction={'column'} gap={2}>

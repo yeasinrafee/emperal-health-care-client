@@ -2,7 +2,6 @@ import { authKey } from '@/constants/authkey';
 import setAccessToken from '@/services/actions/setAccessToken';
 import { getNewAccessToken } from '@/services/actions/userLogin';
 import { TGenericErrorResponse, TResponseSuccess } from '@/types';
-
 import { getFormLocalStorage, setToLocalStorage } from '@/utils/local-storage';
 import axios from 'axios';
 
@@ -48,8 +47,8 @@ instance.interceptors.response.use(
       config.sent = true;
       const response = await getNewAccessToken();
       const accessToken = response?.data?.accessToken;
-      // config.headers['Authorization'] = accessToken;
-      config.headers.Authorization = accessToken;
+      config.headers['Authorization'] = accessToken;
+      // config.headers.Authorization = accessToken;
       setToLocalStorage(authKey, accessToken);
       setAccessToken(accessToken);
       return instance(config);

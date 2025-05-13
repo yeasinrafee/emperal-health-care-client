@@ -92,6 +92,8 @@ const ProfileUpdateModal = ({ open, setOpen, id }: TProps) => {
 
     updatedValues.specialties = specialties;
 
+    console.log(updatedValues);
+
     try {
       updateDoctor({ body: updatedValues, id });
       await refetch();

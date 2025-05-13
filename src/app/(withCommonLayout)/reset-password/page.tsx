@@ -18,9 +18,10 @@ import HCInput from '@/components/Forms/HCInput';
 const validationSchema = z.object({
   newPassword: z.string().min(6, 'Must be at least 6 characters long'),
 });
+
 const ResetPassword = () => {
   const searchParams = useSearchParams();
-  const id = searchParams.get('id');
+  const id = searchParams.get('userId');
   const token = searchParams.get('token');
   console.log({ id, token });
   const router = useRouter();
